@@ -1,1 +1,0 @@
-chek_pallidrome_02
