@@ -9,7 +9,7 @@ public class squareRoot {
         while(start<=end){
             int mid = start + (end -start)/2;
             //agar mid * mid overflow ho gya to newly method to solve kare
-            if ((mid * mid == n) ) {// mid == n/mid;
+            if ((mid * mid == n) ) {//second method of if( mid == n/mid);
                 return mid;
             }
             else if(mid * mid > n){ //  mid == n/mid;
