@@ -91,7 +91,7 @@ public class nqueens {
     }
 
     public static void main(String[] args) {
-        int n = 18;
+        int n = 4;
         List<List<String>> result = nqueen(n);
 
         System.out.println(result);
