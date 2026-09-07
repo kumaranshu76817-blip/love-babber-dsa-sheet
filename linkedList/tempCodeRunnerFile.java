@@ -1,0 +1,3 @@
+
+        myList.deletAtHead();
+        myList.printList();

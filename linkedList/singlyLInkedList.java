@@ -163,6 +163,152 @@ public class singlyLInkedList {
         }
         return -1;
     }
+    //========================================
+    //            updating
+    //========================================
+
+    public void updatAtPosition(int position, int newValue){
+        Node temp = head;
+        if(position < 1 || position > size+1){
+            System.out.println("cannot update beauser of out of range");
+        }
+        for(int i=0; i<position-1; i++){
+            temp = temp.next;
+        }
+        temp.data = newValue;
+    }
+
+    // update value at linkedlist
+    public void updateValue(int element , int newValue){
+        Node temp = head;
+        while(temp != null){
+            if(temp.data == element){
+                temp.data = newValue;
+                
+            }
+            temp = temp.next;
+        }
+    }
+
+    //======================================
+    //         deleting
+    //======================================
+
+    //delete at head 
+    public void deletAtHead(){
+        if(head == null){
+            System.out.println("linkedlist is empty cannot be delete ");
+            return;
+        }
+
+        head = head.next;
+        size--;
+
+        return;
+    }
+
+    // delete at tail , means last of node
+    public void deleteTail(){
+        if(head == null){
+            System.out.println("linkedlist is empty tail doesnt exist");
+            return;
+        }
+
+        if(head == tail){
+            head = null;
+            tail = null;
+            size = 0;
+            return ;
+        }
+
+        Node temp = head;
+        for(int i=1; i<=size-2; i++){
+            temp = temp.next;
+        }
+
+        //now temp is position last second of nodes 
+        temp.next = null;
+        tail = temp;
+        size--;
+
+
+    }
+
+    // delete at position
+    public void deleteAtPosition(int position){
+        if(position < 1 && position > size + 1){
+            System.out.println("invalid position");
+            return;
+        }
+
+        if(position == 1){
+            deletAtHead();
+            return;
+
+        }
+
+        if(position == size){
+            deleteTail();
+            return;
+        }
+
+        Node prev = head;
+        for(int i=1; i<= position-1; i++){
+            prev = prev.next;
+        }
+
+        Node curr = prev.next;
+
+        Node forward = curr.next;
+
+        prev.next = forward;
+        curr = null;
+
+        size--;
+
+
+    }
+
+
+    // delete at value of element
+    public boolean  deleteAtVale(int position){
+        if(position>1 && position < size+1){
+            System.out.println("ll is empty value cannot be delete");
+            return false;
+        }
+
+        if(head.data == position){
+            deletAtHead();
+            return true;
+        }
+
+        Node prev = head;
+        Node curr = head.next;
+
+        while (curr != null) {
+            if(curr.data == position){
+                //delteting ka logic 
+                Node forward = curr.next;
+
+                prev.next = forward;
+                curr.next = null;
+
+                if(tail == curr){
+                    tail = prev;
+                }
+                size--;
+                return true;
+            }
+
+            else{
+                prev = prev.next;
+                curr = curr.next;
+            }
+        }
+
+        return false;
+
+    }
 
     public static void main(String[] args) {
         singlyLInkedList myList = new singlyLInkedList();
@@ -210,5 +356,32 @@ public class singlyLInkedList {
         System.out.println("search in likedlist is 130"+myList.getSearch(130));
 
         System.out.println("find position of 200 in linked list:"+ myList.getFindPosition(150));
+
+
+        myList.updatAtPosition(4, 4000);
+        myList.printList();
+
+        myList.updateValue(5, 500);
+        myList.printList();
+
+        myList.deletAtHead();
+        myList.printList();
+
+        myList.deletAtHead();
+        myList.printList();
+
+        myList.deletAtHead();
+        myList.printList();
+
+        // myList.deleteTail();
+        // myList.printList();
+
+
+        myList.deleteAtPosition(3);
+        myList.printList();
+
+        myList.deleteAtVale(150);
+        myList.printList();
+
     }
 }
