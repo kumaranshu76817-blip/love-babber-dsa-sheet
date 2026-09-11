@@ -1,3 +1,2 @@
-
-        myList.deletAtHead();
+myList.deletAtTail();
         myList.printList();
