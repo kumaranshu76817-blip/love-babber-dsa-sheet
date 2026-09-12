@@ -219,10 +219,20 @@ public class circularSingleLinkedList {
             return;
         }
 
-        Node 
+        Node prevNode = head;
         for(int i=1; i<= position -2; i++){
-
+            prevNode = prevNode.next;
         }
+
+        Node curNode = prevNode.next;
+        Node nextNode = curNode.next;
+
+        prevNode.next = nextNode;
+        curNode = null;
+
+        size--;
+
+
 
     }
 
@@ -255,6 +265,8 @@ public class circularSingleLinkedList {
         mylist.deletAtTail();
         mylist.printList();
 
+        mylist.deleteAtPosition(3);
+        mylist.printList();
         
     }
 
