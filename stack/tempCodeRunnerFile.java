@@ -1,3 +1,1 @@
-public int isEmpty(){
-    //     return head == null;
-    // }
+s.pop();
